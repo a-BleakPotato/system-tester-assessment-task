@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Organization Task Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#title">Skip to task form</a>
+
+  <header class="page-header">
+    <h1>Student Organization Task Tracker</h1>
+    <p>Track club tasks, who owns them, and where they stand.</p>
+  </header>
+
+  <main>
+    <section class="panel" aria-labelledby="form-heading">
+      <h2 id="form-heading">Add a task</h2>
+      <form id="task-form" novalidate>
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" autocomplete="off" aria-describedby="form-error">
+        </div>
+        <div class="field">
+          <label for="assignee">Assignee</label>
+          <input id="assignee" name="assignee" type="text" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="due-date">Due date (optional)</label>
+          <input id="due-date" name="dueDate" type="date">
+        </div>
+        <div class="field">
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+          </select>
+        </div>
+        <p id="form-error" class="error" role="alert"></p>
+        <div class="actions">
+          <button type="submit" id="submit-btn" class="primary">Add task</button>
+          <button type="button" id="cancel-btn" hidden>Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="list-heading">
+      <h2 id="list-heading">Tasks</h2>
+
+      <div class="toolbar">
+        <div class="field">
+          <label for="search">Search titles</label>
+          <input id="search" type="search" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="filter">Filter by status</label>
+          <select id="filter">
+            <option>All</option>
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+          </select>
+        </div>
+      </div>
+
+      <p id="count" tabindex="-1" class="count"></p>
+      <p id="status-message" class="notice" role="status"></p>
+      <ul id="task-list" class="task-list"></ul>
+      <p id="empty" class="empty" hidden></p>
+    </section>
+
+    <section class="panel" aria-labelledby="data-heading">
+      <h2 id="data-heading">Test data</h2>
+      <p>Use these to return to a known starting point.</p>
+      <div class="actions">
+        <button type="button" id="restore-btn">Restore sample data</button>
+        <button type="button" id="clear-btn">Clear all tasks</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
